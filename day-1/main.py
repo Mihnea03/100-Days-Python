@@ -1,5 +1,5 @@
 # Band Name Generator
-# Munteanu Mihnea @ Stephan03
+# Munteanu Mihnea @ Mihnea03
 
 def main():
     print("Welcome to the Band Name Generator.")
