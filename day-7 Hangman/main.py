@@ -45,12 +45,9 @@ def main():
                 print(chosen_word[i], end="")
             else:
                 print('_', end="")
-        print("")
         
-        print(f"Lives left: {lives}")
+        print(f"\nLives left: {lives}")
         
-
-
         guess = str(input("Guess a letter: "))
         print("")
 
@@ -65,7 +62,5 @@ def main():
             guessed_letters.append(guess)
             time.sleep(0.5)
         
-        
-
 if __name__ == '__main__':
     main()
