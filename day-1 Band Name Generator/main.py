@@ -9,7 +9,7 @@ def main():
     print("What's your pet's name?")
     pet_name = str(input())
 
-    band_name = city_name +' ' + pet_name
+    band_name = city_name + ' ' + pet_name
 
     print("Your band name could be {}".format(band_name))
 
