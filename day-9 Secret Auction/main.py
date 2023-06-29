@@ -25,7 +25,7 @@ def main():
     maximum_bid = 0
     maximum_name = ""
 
-    for key in bidders.keys():
+    for key in bidders:
         if bidders[key] > maximum_bid:
             maximum_bid = bidders[key]
             maximum_name = key
