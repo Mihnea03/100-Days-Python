@@ -1,3 +1,6 @@
+# Higher or Lower
+# Munteanu Mihnea @ Mihnea03
+
 data = [
     {
         'name': 'Instagram',
