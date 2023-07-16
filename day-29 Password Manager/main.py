@@ -23,9 +23,7 @@ def write_to_file(website, username, password):
 def random_password():
     pick = string.ascii_lowercase + string.ascii_uppercase + string.digits + string.punctuation
     pass_list = random.choices(population=pick, k=LENGTH)
-    password = ""
-    for choice in pass_list:
-        password += choice
+    password = "".join(pass_list)
     return password
 
 def main():
