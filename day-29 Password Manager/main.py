@@ -5,10 +5,10 @@ from tkinter import *
 from tkinter import messagebox
 import string
 import random
+import json
 
 LOGO = 'logo.png'
-DATA = 'data.txt'
-FORMAT = '{} | {} | {}\n'
+DATA = 'data.json'
 LENGTH = 10
 ASK_FORMAT = """Email: {}
 Password: {}
@@ -16,8 +16,23 @@ Is this ok?
 """
 
 def write_to_file(website, username, password):
-    with open(DATA, 'at') as data_file:
-        data_file.write(FORMAT.format(website, username, password))
+    new_data = {
+        website: {
+            "email": username,
+            "password": password
+        }
+    }
+
+    try:
+        with open(DATA, 'r') as data_file:
+            data = json.load(data_file)
+    except FileNotFoundError:
+        with open(DATA, 'w') as data_file:
+            json.dump(new_data, data_file, indent=4)
+    else:
+        data.update(new_data)
+        with open(DATA, 'w') as data_file:
+            json.dump(data, data_file, indent=4)
     return
 
 def random_password():
@@ -46,7 +61,7 @@ def main():
     pas.grid(row=3, column=0)
 
     website = StringVar()
-    wb_input = Entry(textvariable=website, width=36)
+    wb_input = Entry(textvariable=website)
 
     email_user = StringVar()
     em_un_input = Entry(textvariable=email_user, width=36)
@@ -54,7 +69,7 @@ def main():
     password = StringVar()
     pas_input = Entry(textvariable=password, width=21)
 
-    wb_input.grid(row=1, column=1, columnspan=2)
+    wb_input.grid(row=1, column=1)
     em_un_input.grid(row=2, column=1, columnspan=2)
     pas_input.grid(row=3, column=1)
 
@@ -88,6 +103,26 @@ def main():
     
     add_button = Button(text="Add", command=add_password, width=33, bg='white')
     add_button.grid(row=4, column=1, columnspan=2)
+
+    def search_website():
+        try:
+            with open(DATA, 'r') as data_file:
+                data = json.load(data_file)
+        except FileNotFoundError:
+            data = {}
+        
+        name = website.get()
+
+        try:
+            web = data[name]
+        except KeyError:
+            messagebox.showwarning(title="Error", message="No website with that name is saved!")
+        else:
+            messagebox.showinfo(title=website.get(), message=f"Email: {web['email']}\nPassword: {web['password']}")
+        return
+
+    search = Button(text="Search", command=search_website, bg='white')
+    search.grid(row=1, column=2)
 
     window.mainloop()
     return
