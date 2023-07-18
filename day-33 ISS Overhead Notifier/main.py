@@ -12,8 +12,8 @@ MY_LNG = 26.173720100090176
 ISS_API_ENDPOINT = 'http://api.open-notify.org/iss-now.json'
 SUN_API_ENDPOINT = 'https://api.sunrise-sunset.org/json'
 
-EMAIL = "stef1eds@gmail.com"
-PASS = "apsdlbenhkhzrfti"
+EMAIL = "YOUR EMAIL"
+PASS = "YOUR PASSWORD"
 MSG = "Look up! ISS is waving to you!"
 
 def send_mail():
