@@ -38,7 +38,7 @@ def main():
             "lng": MY_LNG,
             "formatted": 0
         }
-        print(longitude)
+        
         response_sun = requests.get(url=SUN_API_ENDPOINT, params=parameters)    
         response_sun.raise_for_status()
         
